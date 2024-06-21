@@ -1,0 +1,51 @@
+# clone repo
+git clone https://github.com/themariolinml/qbe_home.git
+
+# cmds for create-json branch
+git add .
+git commit -m "create json"
+git push --set-upstream origin feature/create-json
+
+git checkout main
+git merge feature/create-json
+git push
+
+# cmds for validation branch
+git checkout -b feature/validation
+git add .
+git commit -m "add func to validate var_name and catgory fields"
+git push --set-upstream origin feature/validation
+
+git checkout main
+git merge feature/validation
+git push
+
+# cmds for factor-mapping branch
+git checkout -b feature/factor-mapping
+git add .
+git commit -m "adding factor mapping func"
+git push --set-upstream origin feature/factor-mapping
+
+git checkout main
+git merge feature/factor-mapping
+git push
+
+# cmds for develop-api branch
+git checkout -b feature/develop-api
+git add .
+git commit -m "add 2 post endpoint"  
+git push --set-upstream origin feature/develop-api
+
+git checkout main
+git merge feature/factor-mapping
+git push
+
+# cmds for adding-tests branch
+git checkout -b feature/adding-tests
+git add .
+git commit -m "adding tests"
+git push --set-upstream origin feature/adding-tests
+
+git checkout main
+git merge feature/adding-tests
+git push

@@ -37,6 +37,24 @@ def validate_cat_fields(payload: dict[str, list[Record]]) -> dict[str, str]:
 
     return {"message": "Category values are correct."}
 
+def get_factors_helper(payload: dict[str, list[FactorRequest]]) -> dict[str, list[Record]]:
+    """returns the factors for valid var_name and category"""
+    
+    with open("src/data.json", "rb") as file:
+        DB: dict[str, list[Record]] = json.load(file)
+
+    res: dict[str, list[Record]] = {"results": []}
+    for payload_row in payload["data"]:
+        curr_var_name, curr_cat = payload_row["var_name"], payload_row["category"]
+
+        for record_row in DB["data"]:
+            lookup_var_name, lookup_cat = record_row["var_name"], record_row["category"]
+
+            if lookup_var_name == curr_var_name and lookup_cat == curr_cat:
+                res["results"].append(record_row)
+
+    return res
+
 def create_json(data=None):
     """create required json and saved to a local file"""
     if not data:
